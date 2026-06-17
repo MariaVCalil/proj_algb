@@ -8,59 +8,57 @@
 int opcao = 0;
 char tituloMenuAtual[larguraLinha] = "SISTEMA ALGEBRA LINEAR";
 
-void limparTela(){
+void limparTela(){          // Função para limpar a tela
     system("clear"); 
 }
 
-void escreverLinha(int tam, int direcaoLinha){
-    if(direcaoLinha == 0) printf("\u2554");
-    if(direcaoLinha == 1) printf("\u255A");
-    if(direcaoLinha == 2) printf("\u2558");
+void escreverLinha(int tam, int tipoBorda){      // Função para escrever a linha horizontal usada nas bordas do menu
+    if(tipoBorda == topo) printf("\u2554");      // ╔
+    if(tipoBorda == base) printf("\u255A");      // ╗
+    if(tipoBorda == div) printf("\u2558");       // ╘
     for (int i=0; i < tam; i++){
-        printf("\u2550");
+        printf("\u2550");      // ═                    
     }
-    if(direcaoLinha == 0) printf("\u2557\n");
-    if(direcaoLinha == 1) printf("\u255D\n");
-    if(direcaoLinha == 2) printf("\u255B\n");
+    if(tipoBorda == topo) printf("\u2557\n");    // ╚
+    if(tipoBorda == base) printf("\u255D\n");    // ╝
+    if(tipoBorda == div) printf("\u255B\n");     // ╛
 }
 
-void centralizador(int centro)
-{
-    for (int i = 0; i < centro; i++)
-    {
+void centralizador(int centro){         // Função para centralizar o texto do título
+    for (int i = 0; i < centro; i++){
         printf(" ");
     }
 }
 
-void titulo(char titulo[]){
+void titulo(char titulo[]){     // Printa o título
     int centro = (larguraLinha - strlen(titulo)) / 2;
-    escreverLinha(larguraLinha, 0);
-    printf("\u2551");
+    escreverLinha(larguraLinha, topo);
+    printf("\u2551");       // ║ (borda)
     centralizador(centro);
     printf("%s", titulo);
-    if(strlen(titulo)%2 != 0) {
+    if(strlen(titulo)%2 != 0) {     // Corrige com espaço extra caso título seja de tamanho ímpar
         centro++;
     }
     centralizador(centro);
-    printf("\u2551\n");
-    escreverLinha(larguraLinha, 1);
+    printf("\u2551\n");     // ║ (borda)
+    escreverLinha(larguraLinha, base);
 }
 
 void escreverMenu1(){
     strcpy(tituloMenuAtual, "SISTEMA ALGEBRA LINEAR");
     titulo(tituloMenuAtual);
-    printf("   1. Resolver um sistema linear\n");
-    printf("   2. Verificar transformação linear\n");
-    printf("   3. Determinar bases\n");
-    printf("   4. Calcular autovalores e autovetores\n");
-    printf("   5. Diagonalizar uma matriz\n");
-    printf("   6. Arquivos\n");
-    printf("   7. Sair\n");
-    escreverLinha(larguraLinha, 2);
+    printf("   [1] Resolver um sistema linear\n");
+    printf("   [2] Verificar transformação linear\n");
+    printf("   [3] Determinar bases\n");
+    printf("   [4] Calcular autovalores e autovetores\n");
+    printf("   [5] Diagonalizar uma matriz\n");
+    printf("   [6] Arquivos\n");
+    printf("   [7] Sair\n");
+    escreverLinha(larguraLinha, div);
 }
 
 void menuInicial(){
-    //do {
+    do {
         if(opcao < 8) limparTela();
         escreverMenu1();
         scanf("%d", &opcao);
@@ -69,7 +67,7 @@ void menuInicial(){
                 limparTela();
                 strcpy(tituloMenuAtual, "SISTEMA ALGEBRA LINEAR - RESOLUCAO DE SISTEMA LINEAR");
                 titulo(tituloMenuAtual);
-                // Chamar função para resolver sistema linear
+                menuSistemas();
                 break;
             case 2:
                 limparTela();
@@ -109,5 +107,20 @@ void menuInicial(){
                 limparTela();
                 printf("Opção inválida! Por favor, escolha uma opção entre 1 e 7.\n\n");
         }
-    //} while(opcao != 7);
+    } while(opcao != 7);
+}
+
+void menuSistemas(){
+    //do{
+    printf("[1] Escrever sistema linear\n");
+    printf("[2] Ler sistema linear de arquivo\n");
+    scanf("%d", &opcao);
+    switch((opcao)){
+        case 1:
+            limparTela();
+            strcpy(tituloMenuAtual, "SISTEMA ALGEBRA LINEAR - RESOLUCAO DE SISTEMA LINEAR - ESCRITA DE SISTEMA");
+            titulo(tituloMenuAtual);
+            lerSistema();
+            break;
+    //} while(opcao != );}
 }

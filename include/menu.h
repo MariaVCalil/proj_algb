@@ -1,8 +1,15 @@
 #ifndef MENU_H
 #define MENU_H
 
+typedef enum {
+    topo,
+    base,
+    div,
+} tipoBorda;
+
 void menuInicial();
 void escreverMenu1();
+void menuSistemas();
 
 void centralizador(int centro);
 
