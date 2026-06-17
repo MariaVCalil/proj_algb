@@ -7,7 +7,7 @@ void lerMatriz(Matriz *m){
 
     for(int i=0; i < m->linhas; i++){
         for(int j=0; j < m->colunas; j++){
-            scanf("&lf", &m->valores[i][j]);
+            scanf("%lf", &m->valores[i][j]);
         }
         printf("\n");
     }

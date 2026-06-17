@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "include/menu.h"
-#include "menu.h"
 
 #define larguraLinha 98
 
@@ -111,5 +110,4 @@ void menuInicial(){
                 printf("Opção inválida! Por favor, escolha uma opção entre 1 e 7.\n\n");
         }
     //} while(opcao != 7);
-    return 0;
 }
