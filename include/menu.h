@@ -1,6 +1,12 @@
-#ifndef MENU.H
-#define MENU.H
+#ifndef MENU_H
+#define MENU_H
 
-void menuInicial();
+int menuInicial();
+void escreverMenu1();
+
+void centralizador(int centro);
+
+void limparTela();
+void escreverLinha();
 
 #endif
