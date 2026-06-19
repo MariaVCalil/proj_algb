@@ -112,15 +112,16 @@ void menuInicial(){
 
 void menuSistemas(){
     //do{
-    printf("[1] Escrever sistema linear\n");
-    printf("[2] Ler sistema linear de arquivo\n");
-    scanf("%d", &opcao);
-    switch((opcao)){
-        case 1:
-            limparTela();
-            strcpy(tituloMenuAtual, "SISTEMA ALGEBRA LINEAR - RESOLUCAO DE SISTEMA LINEAR - ESCRITA DE SISTEMA");
-            titulo(tituloMenuAtual);
-            lerSistema();
-            break;
-    //} while(opcao != );}
+        printf("[1] Escrever sistema linear\n");
+        printf("[2] Ler sistema linear de arquivo\n");
+        scanf("%d", &opcao);
+        switch((opcao)){
+            case 1:
+                limparTela();
+                strcpy(tituloMenuAtual, "SISTEMA ALGEBRA LINEAR - RESOLUCAO DE SISTEMA LINEAR - ESCRITA DE SISTEMA");
+                titulo(tituloMenuAtual);
+                lerSistema();
+                break;
+        } 
+    //} while(opcao != );
 }
