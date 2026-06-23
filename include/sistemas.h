@@ -1,3 +1,4 @@
+#include "matrizes.h"
 #ifndef SISTEMAS_H
 #define SISTEMAS_H
 
@@ -7,7 +8,7 @@
         int qtdIcog;
         Matriz *matriz;
     } Sistema;
-
+    
     void lerSistema();
 
 #endif

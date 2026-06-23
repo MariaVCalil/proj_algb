@@ -11,7 +11,7 @@ void lerSistema(){
     scanf("%d", &sistema.qtdIcog);
     for(int i=0;i<sistema.qtdLinhas;i++){
         for (int j=0;j<=sistema.qtdIcog;j++){
-            scanf("%[^ ]s", &sistema.*matriz.valores)
+            scanf("%[^ ]s", &sistema.matriz->sistema[i][j]);
         }
     }
 }   

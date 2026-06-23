@@ -4,17 +4,19 @@
 typedef enum {
     topo,
     base,
-    div,
+    divisa,
 } tipoBorda;
 
+void limparTela();
+void invalida(int n1, int n2);
+void encerramento();
+void naoImplementado();
+
+void escreveTitulo(char tituloAt[], char subTitulo[]);
+void escreverLinha(int tipoBorda);
+
 void menuInicial();
-void escreverMenu1();
 void menuSistemas();
 
-void centralizador(int centro);
-
-void limparTela();
-void escreverLinha(int tam, int direcaoLinha);
-void titulo(char titulo[]);
 
 #endif

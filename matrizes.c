@@ -7,7 +7,7 @@ void lerMatriz(Matriz *m){
 
     for(int i=0; i < m->linhas; i++){
         for(int j=0; j < m->colunas; j++){
-            scanf("%lf", &m->valores[i][j]);
+            scanf("%lf", &m->matriz[i][j]);
         }
         printf("\n");
     }
@@ -16,7 +16,7 @@ void lerMatriz(Matriz *m){
 void imprimirMatriz(Matriz *m){
     for(int i=0; i < m->linhas; i++){
         for(int j=0; j < m->colunas; j++){
-            printf("%8.2lf ", m->valores[i][j]);
+            printf("%8.2lf ", m->matriz[i][j]);
         }
         printf("\n");
     }

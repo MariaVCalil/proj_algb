@@ -4,7 +4,8 @@
 typedef struct {
     int linhas;
     int colunas;
-    double valores[10][10];
+    double matriz[10][10];
+    char sistema[50][50];
 } Matriz;
 
 void lerMatriz(Matriz *m);
