@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <strings.h>
+#include <string.h>
 #include "include/sistemas.h"
 #include "include/matrizes.h"
 
@@ -10,8 +10,6 @@ void lerSistema(){
     printf("    Quantas icógnitas tem o sistema?\n  -> ");
     scanf("%d", &sistema.qtdIcog);
     for(int i=0;i<sistema.qtdLinhas;i++){
-        for (int j=0;j<=sistema.qtdIcog;j++){
-            scanf("%[^ ]s", &sistema.matriz->sistema[i][j]);
-        }
+        scanf("%s[^\n]", sistema.equacoes[i]);
     }
 }   
