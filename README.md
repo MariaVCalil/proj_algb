@@ -52,7 +52,7 @@ projeto/
 No terminal, dentro da pasta do projeto, execute:
 
 ```bash
-gcc main.c menu.c sistemas.c matrizes.c arquivos.c -o algebra
+gcc main.c menu.c sistemas.c matrizes.c arquivos.c util.c -o algebra
 ```
 
 ### Execução

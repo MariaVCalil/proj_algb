@@ -10,5 +10,6 @@
     } Sistema;
     
     void lerSistema();
+    int parseSistema(Sistema *s);
 
 #endif
