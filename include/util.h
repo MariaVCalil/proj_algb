@@ -9,5 +9,6 @@
 
 void limparTela();
 void limpaEspacos(char str[][100], int N);
+void escreverLinhaArq(FILE *arq);
 
 #endif

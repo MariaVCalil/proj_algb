@@ -19,6 +19,7 @@ void escreverMenu1(){
     printf("\t[7] Sair\n");
     escreverLinha(divisa);
 }
+
 void menuInicial(){
     do {
         printf("  -> ");

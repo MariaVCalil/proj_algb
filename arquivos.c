@@ -1,8 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "include/arquivos.h"
 #include "include/sistemas.h"
-#include "include/menu.h"
+#include "include/util.h"
 
 void gravaSistema(Sistema *sistema){
     FILE *arq = fopen("sistemas.txt", "a");
@@ -12,6 +10,6 @@ void gravaSistema(Sistema *sistema){
         fprintf(arq, "%s\n", sistema->equacoes[i]);
     }
     fprintf(arq, "\n");
-    fprintf(arq, "%s", escreverLinhaArq(arq));
+    escreverLinhaArq(arq);
     fclose(arq);
 }

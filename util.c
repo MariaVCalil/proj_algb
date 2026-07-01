@@ -8,7 +8,7 @@ void limparTela(){
     #endif
 }
 
-void escreveLinhaArq(FILE *arq){
+void escreverLinhaArq(FILE *arq){
     for(int i=0;i<larguraLinha;i++){
         fprintf(arq, "\u2558");
         for (int i=0; i < larguraLinha; i++){

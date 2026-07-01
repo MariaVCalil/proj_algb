@@ -1,3 +1,4 @@
+#include <stdio.h>
 #ifndef MATRIZES_H
 #define MATRIZES_H
 
