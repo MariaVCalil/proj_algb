@@ -1,7 +1,6 @@
 #ifndef MENU_H
 #define MENU_H
-
-#define larguraLinha 98
+#include "util.h"
 
 extern char tituloPrinc[larguraLinha];
 
@@ -11,7 +10,7 @@ typedef enum {
     divisa,
 } tipoBorda;
 
-void invalida(int n1, int n2);
+void invalida(char n1, char n2);
 void encerramento();
 void naoImplementado();
 

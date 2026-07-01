@@ -1,7 +1,21 @@
 #include "include/util.h"
 
 void limparTela(){
-    system("cls");
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
+
+void escreveLinhaArq(FILE *arq){
+    for(int i=0;i<larguraLinha;i++){
+        fprintf(arq, "\u2558");
+        for (int i=0; i < larguraLinha; i++){
+            fprintf(arq, "\u2550");                        // ═                    
+        }
+        fprintf(arq, "\u255B\n");
+    }
 }
 
 void limpaEspacos(char str[][100], int N){

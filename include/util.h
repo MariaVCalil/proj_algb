@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define larguraLinha 98
+
 #ifndef UTIL_H
 #define UTIL_H
 
