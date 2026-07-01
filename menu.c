@@ -1,10 +1,8 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include "include/menu.h"
 #include "include/sistemas.h"
-
-#define larguraLinha 98
+#include "include/util.h"
 
 int opcao = 0;
 char tituloPrinc[larguraLinha] = "SISTEMA ALGEBRA LINEAR";
@@ -23,9 +21,6 @@ void escreverMenu1(){
 }
 void menuInicial(){
     do {
-        limparTela();
-        escreveTitulo(tituloPrinc, "\0"); 
-        escreverMenu1();
         printf("  -> ");
         scanf("%d", &opcao);
         limparTela();
@@ -59,7 +54,7 @@ void menuInicial(){
                 break;
             default:
                 limparTela();
-                escreveTitulo(tituloPrinc, "\0");
+                escreveTitulo(tituloPrinc, "");
                 invalida(1, 7);
                 escreverMenu1();
                 break;
@@ -68,7 +63,7 @@ void menuInicial(){
 }
 
 void menuSistemas(){
-    //do{
+    do {
         printf("\t[1] Escrever sistema linear\n");
         printf("\t[2] Ler sistema linear de arquivo\n");
         printf("\t[3] Voltar\n");
@@ -88,19 +83,19 @@ void menuSistemas(){
                 naoImplementado();
                 break;
             case 3:
-                menuInicial();
+                escreverMenu1();
                 break;
             default:
                 limparTela();  
                 escreveTitulo(tituloPrinc, "LEITURA DE SISTEMA");
                 invalida(1, 3);
                 break;
-        } 
-    //} while(opcao != );
+        }
+    } while(opcao != 3);
 }
 
 void naoImplementado(){
-    printf("\tFuncionalidade não implementada! Tente outra opção.\n\n");
+    printf("\tFuncionalidade não implementada! Tente outra opção:\n\n");
     printf("\t[1] Tentar novamente\n");
     printf("\t[2] Encerrar\n");
     escreverLinha(divisa);
@@ -123,12 +118,9 @@ void encerramento(){
     printf("Até logo!\n");
 }
 void invalida(int n1, int n2){
-    printf("Opção inválida! Por favor, escolha uma opção entre %d e %d:\n", n1, n2);
+    printf("\tOpção inválida! Por favor, escolha uma opção entre %d e %d:\n\n", n1, n2);
 }
 
-void limparTela(){          // Função para limpar a tela
-    system("clear"); 
-}
 void escreverLinha(int tipoBorda){      // Função para escrever as bordas do menu
     if(tipoBorda == topo) printf("\u2554");      // ╔
     if(tipoBorda == base) printf("\u255A");      // ╗

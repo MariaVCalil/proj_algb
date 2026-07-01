@@ -6,7 +6,7 @@
         char equacoes[10][100];
         int qtdLinhas;
         int qtdIcog;
-        Matriz *matriz;
+        Matriz matriz;
     } Sistema;
     
     void lerSistema();
