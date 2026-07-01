@@ -22,6 +22,7 @@ void escreverMenu1(){
 
 void menuInicial(){
     do {
+        escreverMenu1();
         printf("  -> ");
         scanf(" %c", &opcao);
         limparTela();
@@ -75,24 +76,51 @@ void menuSistemas(){
         switch((opcao)){
             case '1':
                 limparTela();
-                escreveTitulo(tituloPrinc, "LEITURA DE SISTEMA");
+                escreveTitulo(tituloPrinc, " - LEITURA DE SISTEMA");
                 lerSistema();
                 break;
             case '2':
                 limparTela();
-                escreveTitulo(tituloPrinc, "LEITURA DE SISTEMA DE ARQUIVO");
+                escreveTitulo(tituloPrinc, " - LEITURA DE SISTEMA DE ARQUIVO");
                 naoImplementado();
                 break;
             case '3':
-                escreverMenu1();
+                limparTela();
+                escreveTitulo(tituloPrinc, "");
                 break;
             default:
                 limparTela();  
-                escreveTitulo(tituloPrinc, "LEITURA DE SISTEMA");
+                escreveTitulo(tituloPrinc, " - LEITURA DE SISTEMA");
                 invalida('1', '3');
                 break;
         }
     } while(opcao != '3');
+}
+
+void menuSistemas2(){
+    printf("\t[1] Resolver sistema linear\n");
+    printf("\t[2] Voltar\n");
+    escreverLinha(divisa);
+    printf("  -> ");
+    scanf(" %c", &opcao);
+    limparTela();
+    switch((opcao)){
+        case '1':
+            limparTela();
+            escreveTitulo(tituloPrinc, " - RESOLUCAO DE SISTEMA LINEAR");
+            //resolverSistema();
+            naoImplementado();
+            break;
+        case '2':
+            limparTela();
+            escreveTitulo(tituloPrinc, " - LEITURA DE SISTEMA");
+            break;
+        default:
+            limparTela();
+            escreveTitulo(tituloPrinc, " - LEITURA DE SISTEMA");
+            invalida('1', '2');
+            break;
+    }
 }
 
 void naoImplementado(){
@@ -105,6 +133,7 @@ void naoImplementado(){
     limparTela();
     switch(opcao){
         case '1':
+            escreveTitulo(tituloPrinc, "");
             menuInicial();
             break;
         case '2':
@@ -117,12 +146,12 @@ void naoImplementado(){
 }
 void encerramento(){
     escreveTitulo(tituloPrinc, "");
-    printf("Até logo!\n");
+    printf("\n\t\t\t\t\t    Até logo...\n");
+    escreverLinha(divisa);
 }
 void invalida(char n1, char n2){
     printf("\tOpção inválida! Por favor, escolha uma opção entre %c e %c:\n\n", n1, n2);
 }
-
 void escreverLinha(int tipoBorda){      // Função para escrever as bordas do menu
     if(tipoBorda == topo) printf("\u2554");      // ╔
     if(tipoBorda == base) printf("\u255A");      // ╗

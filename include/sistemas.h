@@ -11,5 +11,6 @@
     
     void lerSistema();
     void parseSistema(Sistema *sistema);
+    void imprimirSistema(Sistema *sistema);
 
 #endif

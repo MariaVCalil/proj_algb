@@ -7,13 +7,13 @@
 #include "include/util.h"
 #include "include/arquivos.h"
 
-void parseSistema(Sistema *sistema){        // Interpreta as equações em texto e monta a matriz aumentada
+void parseSistema(Sistema *sistema){        // Extrai os a matriz aumentada das string do sistema
     Matriz *matriz = &sistema->matriz;
     matriz->linhas = sistema->qtdLinhas;
     matriz->colunas = sistema->qtdIcog + 1;     // Colunas = incógnitas + termo independente
 
     char variaveis[10];
-    for(int i=0;i<sistema->qtdIcog;i++){        // Define a ordem das variáveis: x, y, z, ...
+    for(int i=0;i<sistema->qtdIcog;i++){        // Define a ordem das variáveis: x, y, z...
         variaveis[i] = 'x' + i;
     }
 
@@ -60,6 +60,17 @@ void parseSistema(Sistema *sistema){        // Interpreta as equações em texto
     }
 }
 
+void imprimirSistema(Sistema *sistema){
+    Matriz *matriz = &sistema->matriz;
+    for(int i=0;i<matriz->linhas;i++){
+        printf("\t|\t");
+        for(int j=0;j<sistema->qtdIcog;j++){ // percorre as colunas das icognitas
+            printf("%+.2lf%c\t", matriz->matriz[i][j], 'x' + j);
+        }
+        printf("=  %.2lf\n", matriz->matriz[i][sistema->qtdIcog]); // percorre após o =
+    }
+}
+
 void lerSistema(){
     Sistema sistema;
     printf("\tQuantas linhas tem o sistema?\n  -> ");
@@ -68,7 +79,7 @@ void lerSistema(){
     scanf("%d", &sistema.qtdIcog);
     limparTela();
     getchar();
-    escreveTitulo(tituloPrinc, "- LEITURA DE SISTEMA");
+    escreveTitulo(tituloPrinc, " - LEITURA DE SISTEMA");
     printf("\tEscreva um sistema com %d equações e %d icógnitas:\n", sistema.qtdLinhas, sistema.qtdIcog);
     escreverLinha(divisa);
     for(int i=0;i<sistema.qtdLinhas;i++){
@@ -79,9 +90,13 @@ void lerSistema(){
     limpaEspacos(sistema.equacoes, sistema.qtdLinhas);
     gravaSistema(&sistema);
 
-    parseSistema(&sistema);     // Monta a matriz aumentada
-    printf("\n\tMatriz aumentada do sistema:\n");
-    escreverLinha(divisa);
+    parseSistema(&sistema); 
+    limparTela();
+    escreveTitulo(tituloPrinc, " - LEITURA DE SISTEMA");
+    imprimirSistema(&sistema);
+    printf("\tSistema gravado no arquivo 'sistemas.txt'.\n\n");
+    printf("\tMatriz aumentada do sistema escrito:\n");
     imprimirMatriz(&sistema.matriz);
     escreverLinha(divisa);
+    menuSistemas2();
 }

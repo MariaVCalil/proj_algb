@@ -10,5 +10,6 @@ typedef struct {
 }  Matriz;
 void lerMatriz(Matriz *m);
 void imprimirMatriz(Matriz *m);
+void escreverMatrizArq(FILE *arq, Matriz *m);
 
 #endif

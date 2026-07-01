@@ -12,7 +12,6 @@ char titulo[98] = "SISTEMA ALGEBRA LINEAR";
 int main(){
     limparTela();
     escreveTitulo(titulo, ""); 
-    escreverMenu1();
     menuInicial();
     return 0;
 }

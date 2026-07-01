@@ -20,5 +20,6 @@ void escreverLinha(int tipoBorda);
 void menuInicial();
 void escreverMenu1();
 void menuSistemas();
+void menuSistemas2();
 
 #endif
