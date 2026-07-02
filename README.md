@@ -10,7 +10,7 @@ O programa é um sistema interativo em C que reúne ferramentas para resolver pr
 - [x] Menu interativo com interface visual no terminal
 - [x] Leitura de sistemas lineares
 - [x] Leitura e impressão de matrizes
-- [ ] Resolução de sistemas lineares
+- [x] Resolução de sistemas lineares
 - [ ] Verificação de transformação linear
 - [ ] Determinação de bases
 - [ ] Cálculo de autovalores e autovetores

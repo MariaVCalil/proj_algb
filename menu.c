@@ -97,7 +97,7 @@ void menuSistemas(){
     } while(opcao != '3');
 }
 
-void menuSistemas2(){
+void menuSistemas2(Sistema *sistema){
     printf("\t[1] Resolver sistema linear\n");
     printf("\t[2] Voltar\n");
     escreverLinha(divisa);
@@ -108,8 +108,7 @@ void menuSistemas2(){
         case '1':
             limparTela();
             escreveTitulo(tituloPrinc, " - RESOLUCAO DE SISTEMA LINEAR");
-            //resolverSistema();
-            naoImplementado();
+            resolverSistema(sistema);
             break;
         case '2':
             limparTela();

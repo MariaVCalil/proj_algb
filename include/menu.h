@@ -1,6 +1,7 @@
 #ifndef MENU_H
 #define MENU_H
 #include "util.h"
+#include "sistemas.h"
 
 extern char tituloPrinc[larguraLinha];
 
@@ -20,6 +21,6 @@ void escreverLinha(int tipoBorda);
 void menuInicial();
 void escreverMenu1();
 void menuSistemas();
-void menuSistemas2();
+void menuSistemas2(Sistema *sistema);
 
 #endif
