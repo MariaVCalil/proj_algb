@@ -11,7 +11,7 @@ O programa é um sistema interativo em C que reúne ferramentas para resolver pr
 - [x] Leitura de sistemas lineares
 - [x] Leitura e impressão de matrizes
 - [x] Resolução de sistemas lineares
-- [ ] Verificação de transformação linear
+- [x] Verificação de transformação linear
 - [ ] Determinação de bases
 - [ ] Cálculo de autovalores e autovetores
 - [ ] Diagonalização de matrizes
@@ -52,7 +52,7 @@ projeto/
 No terminal, dentro da pasta do projeto, execute:
 
 ```bash
-gcc main.c menu.c sistemas.c matrizes.c arquivos.c util.c -o algebra
+gcc main.c menu.c sistemas.c transformacoes.c matrizes.c arquivos.c util.c -o algebra
 ```
 
 ### Execução

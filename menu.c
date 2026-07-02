@@ -2,6 +2,7 @@
 #include <string.h>
 #include "include/menu.h"
 #include "include/sistemas.h"
+#include "include/transformacoes.h"
 #include "include/util.h"
 
 char opcao;
@@ -33,7 +34,7 @@ void menuInicial(){
                 break;
             case '2':
                 escreveTitulo(tituloPrinc, " - VERIFICACAO DE TRANSFORMACAO LINEAR");
-                naoImplementado();
+                lerTransformacao();
                 break;
             case '3':
                 escreveTitulo(tituloPrinc, " - DETERMINACAO DE BASES");
