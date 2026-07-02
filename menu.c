@@ -3,6 +3,7 @@
 #include "include/menu.h"
 #include "include/sistemas.h"
 #include "include/transformacoes.h"
+#include "include/bases.h"
 #include "include/util.h"
 
 char opcao;
@@ -38,7 +39,7 @@ void menuInicial(){
                 break;
             case '3':
                 escreveTitulo(tituloPrinc, " - DETERMINACAO DE BASES");
-                naoImplementado();
+                lerBase();
                 break;
             case '4':
                 escreveTitulo(tituloPrinc, " - AUTOVALORES E AUTOVETORES");
