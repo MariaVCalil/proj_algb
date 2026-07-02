@@ -7,7 +7,51 @@
 #include "include/util.h"
 #include "include/arquivos.h"
 
-void parseSistema(Sistema *sistema){        // Extrai os a matriz aumentada das string do sistema
+void parseExpressao(char *expressao, char variaveis[], int qtdVar, double linha[], double *constante){
+    int sinal = 1;
+    int lado = 1;       // 1 = antes do '=', -1 = depois do '='
+    int j = 0;
+    while(expressao[j] != '\0'){
+        if(expressao[j] == '+'){
+            sinal = 1;
+            j++;
+        } else if(expressao[j] == '-'){
+            sinal = -1;
+            j++;
+        } else if(expressao[j] == '='){
+            lado = -1;
+            sinal = 1;
+            j++;
+        } else {
+            double numero = 1;      // Coeficiente do termo (1 quando não vem número escrito)
+            if((expressao[j] >= '0' && expressao[j] <= '9') || expressao[j] == '.'){
+                numero = atof(&expressao[j]);
+                while((expressao[j] >= '0' && expressao[j] <= '9') || expressao[j] == '.'){
+                    j++;
+                }
+                if(expressao[j] == '/'){        // Coeficiente em fração (ex.: 5/2)
+                    j++;
+                    numero = numero / atof(&expressao[j]);
+                    while((expressao[j] >= '0' && expressao[j] <= '9') || expressao[j] == '.'){
+                        j++;
+                    }
+                }
+            }
+            if(expressao[j] >= 'a' && expressao[j] <= 'z'){      // Termo com variável
+                int coluna = 0;
+                while(variaveis[coluna] != expressao[j]){
+                    coluna++;
+                }
+                linha[coluna] += lado * sinal * numero;
+                j++;
+            } else {        // Termo constante: vai para o termo independente, trocando de lado
+                *constante -= lado * sinal * numero;
+            }
+        }
+    }
+}
+
+void parseSistema(Sistema *sistema){        // Extrai a matriz aumentada das strings do sistema
     Matriz *matriz = &sistema->matriz;
     matriz->linhas = sistema->qtdLinhas;
     matriz->colunas = sistema->qtdIcog + 1;     // Colunas = incógnitas + termo independente
@@ -21,42 +65,9 @@ void parseSistema(Sistema *sistema){        // Extrai os a matriz aumentada das 
         for(int j=0;j<matriz->colunas;j++){     // Zera a linha antes de preencher
             matriz->matriz[i][j] = 0;
         }
-
-        char *equacao = sistema->equacoes[i];
-        int sinal = 1;
-        int lado = 1;       // 1 = antes do '=', -1 = depois do '='
-        int j = 0;
-        while(equacao[j] != '\0'){
-            if(equacao[j] == '+'){
-                sinal = 1;
-                j++;
-            } else if(equacao[j] == '-'){
-                sinal = -1;
-                j++;
-            } else if(equacao[j] == '='){
-                lado = -1;
-                sinal = 1;
-                j++;
-            } else {
-                double numero = 1;      // Coeficiente do termo (1 quando não vem número escrito)
-                if((equacao[j] >= '0' && equacao[j] <= '9') || equacao[j] == '.'){
-                    numero = atof(&equacao[j]);
-                    while((equacao[j] >= '0' && equacao[j] <= '9') || equacao[j] == '.'){
-                        j++;
-                    }
-                }
-                if(equacao[j] >= 'a' && equacao[j] <= 'z'){      // Termo com variável
-                    int coluna = 0;
-                    while(variaveis[coluna] != equacao[j]){
-                        coluna++;
-                    }
-                    matriz->matriz[i][coluna] += lado * sinal * numero;
-                    j++;
-                } else {        // Termo constante: vai para a última coluna, trocando de lado
-                    matriz->matriz[i][sistema->qtdIcog] -= lado * sinal * numero;
-                }
-            }
-        }
+        double constante = 0;
+        parseExpressao(sistema->equacoes[i], variaveis, sistema->qtdIcog, matriz->matriz[i], &constante);
+        matriz->matriz[i][sistema->qtdIcog] = constante;    // Termo independente na última coluna
     }
 }
 

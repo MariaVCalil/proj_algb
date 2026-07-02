@@ -4,6 +4,7 @@
 #include "include/sistemas.h"
 #include "include/transformacoes.h"
 #include "include/bases.h"
+#include "include/autovalores.h"
 #include "include/util.h"
 
 char opcao;
@@ -43,7 +44,7 @@ void menuInicial(){
                 break;
             case '4':
                 escreveTitulo(tituloPrinc, " - AUTOVALORES E AUTOVETORES");
-                naoImplementado();
+                lerAutovalores();
                 break;
             case '5':
                 escreveTitulo(tituloPrinc, " - DIAGONALIZACAO");

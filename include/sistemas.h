@@ -11,9 +11,11 @@
     
     void lerSistema();
     void parseSistema(Sistema *sistema);
+    void parseExpressao(char *expressao, char variaveis[], int qtdVar, double linha[], double *constante);
     void imprimirSistema(Sistema *sistema);
     void resolverSistema(Sistema *sistema);
     void escalonar(Matriz *matriz);
     int posto(Matriz *matriz, int qtdColunas);
+    int ehZero(double valor);
 
 #endif

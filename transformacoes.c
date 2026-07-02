@@ -21,35 +21,8 @@ void parseTransformacao(Transformacao *t){      // Extrai a matriz da transforma
         for(int j=0;j<matriz->colunas;j++){     // Zera a linha antes de preencher
             matriz->matriz[i][j] = 0;
         }
-
-        char *componente = t->componentes[i];
-        int sinal = 1;
-        int j = 0;
-        while(componente[j] != '\0'){
-            if(componente[j] == '+'){
-                sinal = 1;
-                j++;
-            } else if(componente[j] == '-'){
-                sinal = -1;
-                j++;
-            } else {
-                double numero = 1;      // Coeficiente do termo (1 quando não vem número escrito)
-                if((componente[j] >= '0' && componente[j] <= '9') || componente[j] == '.'){
-                    numero = atof(&componente[j]);
-                    while((componente[j] >= '0' && componente[j] <= '9') || componente[j] == '.'){
-                        j++;
-                    }
-                }
-                if(componente[j] >= 'a' && componente[j] <= 'z'){      // Termo com variável
-                    int coluna = 0;
-                    while(variaveis[coluna] != componente[j]){
-                        coluna++;
-                    }
-                    matriz->matriz[i][coluna] += sinal * numero;
-                    j++;
-                }
-            }
-        }
+        double constante = 0;       // A transformação não tem termo constante
+        parseExpressao(t->componentes[i], variaveis, t->qtdEntrada, matriz->matriz[i], &constante);
     }
 }
 
