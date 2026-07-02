@@ -5,6 +5,7 @@
 #include "include/transformacoes.h"
 #include "include/bases.h"
 #include "include/autovalores.h"
+#include "include/diagonalizacao.h"
 #include "include/util.h"
 
 char opcao;
@@ -48,7 +49,7 @@ void menuInicial(){
                 break;
             case '5':
                 escreveTitulo(tituloPrinc, " - DIAGONALIZACAO");
-                naoImplementado();
+                lerDiagonalizacao();
                 break;
             case '6':
                 escreveTitulo(tituloPrinc, " - GERENCIAMENTO DE ARQUIVOS");

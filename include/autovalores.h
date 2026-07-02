@@ -4,5 +4,6 @@
 
     void lerAutovalores();
     void calcularAutovalores(Transformacao *t);
+    double raizQuadrada(double valor);
 
 #endif
